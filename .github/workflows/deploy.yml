@@ -1,0 +1,26 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main # или master, в зависимости от вашей ветки
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout 🔧
+      uses: actions/checkout@v3
+
+    - name: Install dependencies 📦
+      run: yarn install
+
+    - name: Build 🚀
+      run: yarn run build # Замените на вашу команду сборки, если она есть
+
+    - name: Deploy 🚀
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./dist # Замените на директорию, где находится собранный проект

@@ -17,10 +17,10 @@ export class AddTasks {
         this.input.addEventListener('keypress', this.filterTasks)
     }
 
-    renderTask() {
+    renderTask(taskName) {
         return `
             <div class="task">
-                <span>${this.input.value}</span>
+                <span>${taskName}</span>
                 <input type="checkbox">
             </div>
         `
